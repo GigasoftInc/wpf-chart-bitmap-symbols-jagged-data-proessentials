@@ -169,19 +169,19 @@ namespace BitmapSymbolsJaggedData
             //   ProEssentials tints it using SubsetColors[s] set in Step 4.
             //   One shape file → any color. The tint comes from SubsetColors[s].
             // =======================================================================
-            var bitmaps = new (int slot, string file, bool colorize)[]
+            var bitmaps = new (int slot, string file, Gigasoft.ProEssentials.Enums.ResourceBitmapColorizeMode colorize)[]
             {
-                (0, "symbolBlueDot.png", false),  // pre-colored, use as-is
-                (1, "symbol01.png",      true),   // silhouette, tinted by SubsetColors[1]
-                (2, "symbol02.png",      true),   // silhouette, tinted by SubsetColors[2]
-                (3, "symbol03.png",      true),   // silhouette, tinted by SubsetColors[3]
+                (0, "symbolBlueDot.png", Gigasoft.ProEssentials.Enums.ResourceBitmapColorizeMode.None),  // pre-colored, use as-is
+                (1, "symbol01.png",      Gigasoft.ProEssentials.Enums.ResourceBitmapColorizeMode.Mask),   // silhouette, tinted by SubsetColors[1]
+                (2, "symbol02.png",      Gigasoft.ProEssentials.Enums.ResourceBitmapColorizeMode.Mask),   // silhouette, tinted by SubsetColors[2]
+                (3, "symbol03.png",      Gigasoft.ProEssentials.Enums.ResourceBitmapColorizeMode.Mask),   // silhouette, tinted by SubsetColors[3]
             };
 
             foreach (var (slot, file, colorize) in bitmaps)
             {
                 Pesgo1.PePlot.Bitmaps.WorkingBitmap = slot;
                 Pesgo1.PePlot.Bitmaps.Filename      = file;
-                Pesgo1.PePlot.Bitmaps.Colorize      = colorize;
+                Pesgo1.PePlot.Bitmaps.ColorizeMode = colorize;
                 Pesgo1.PePlot.Bitmaps.Style         = ResourceBitmapStyle.MediumCentered;
             }
 
